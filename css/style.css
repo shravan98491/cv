@@ -1,0 +1,132 @@
+body{
+  color: #40514E;
+  margin: 0;
+  text-align: center;
+  font-family:'Kdam Thmor Pro', sans-serif;
+}
+
+h1{
+font-size: 3.25rem;
+color:  #66BFBF;
+line-height: 4;
+  margin: 50px auto 0 auto;
+  font-family: 'Anton', sans-serif;
+
+}
+h2{
+  font-size: 1.98rem;
+  color:  #66BFBF;
+  font-weight: normal;
+  margin: 0 auto 0 auto;
+  font-family: 'Anton', sans-serif;
+  padding-bottom: 10px;
+}
+h3{
+  margin: 0 auto 0 auto;
+  color: #11999E;
+  font-family: 'Anton', sans-serif;
+}
+p{
+  line-height: 2;
+}
+hr{
+  border: dotted #EAF6F6 6px;
+  border-bottom: none;
+  width: 4%;
+  margin: 100px auto;
+}
+a{
+  color: #11999E;
+  font-family:  'Anton', sans-serif;
+  margin: 10px 20px;
+  text-decoration: none;
+}
+a:hover{
+  color: #EAF6F6;
+}
+.top{
+  background-color: #CDF0EA;
+  position: relative;
+  padding-top: 100px;
+
+}
+.middle{
+  margin: 100px 0 100px 0;
+
+}
+.bottom{
+background-color: #66BFBF;
+padding: 50px 0 20px;
+}
+.bottomfooter-link{
+  color:#11999E;
+}
+.skill-row{
+  margin: 100px auto 100px auto;
+  width: 50%;
+  text-align: left;
+}
+.skill-img{
+  width: 25%;
+  float: left;
+  margin-right: 10px;
+}
+.skill-img1{
+  width: 25%;
+  float: right;
+  margin-left: 10px;
+}
+.profile-img{
+  width:20%
+}
+.pro{
+  text-decoration: underline;
+}
+.top-cloud{
+  position: absolute;
+   right: 400px;
+   top: 10px;
+
+}
+
+.bottom-cloud{
+  position: absolute;
+  left: 400px;
+  top:140px;
+}
+.cnt-p{
+  width: 40%;
+  margin: 40px auto 60px;
+}
+.btn {
+  background: #30e3cb;
+  background-image: -webkit-linear-gradient(top, #30e3cb, #2cb4ad);
+  background-image: -moz-linear-gradient(top, #30e3cb, #2cb4ad);
+  background-image: -ms-linear-gradient(top, #30e3cb, #2cb4ad);
+  background-image: -o-linear-gradient(top, #30e3cb, #2cb4ad);
+  background-image: linear-gradient(to bottom, #30e3cb, #2cb4ad);
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  text-shadow: 8px 7px 12px #666666;
+  font-family:  'Anton', sans-serif;
+  color: #ffffff;
+  font-size: 24px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+.copy-right{
+  color: #EAF6F6;
+  font-size: 0.75rem;
+  padding: 10px 0;
+}
