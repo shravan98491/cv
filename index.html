@@ -1,239 +1,210 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Shravan | Portfolio</title>
-  <link rel="icon" href="favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Shravan | Futuristic Portfolio</title>
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif;
+}
+body {
+  background: #05080f;
+  color: white;
+  overflow-x: hidden;
+}
 
-  <style>
-    /* Reset & Base */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
-      color: white;
-      overflow-x: hidden;
-    }
+/* Cursor glow trail */
+.glow {
+  position: fixed;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 10000;
+  animation: glowColors 3s linear infinite;
+}
+@keyframes glowColors {
+  0%   { background: radial-gradient(circle, rgba(255,0,0,0.8), transparent); }
+  20%  { background: radial-gradient(circle, rgba(255,255,0,0.8), transparent); }
+  40%  { background: radial-gradient(circle, rgba(0,255,0,0.8), transparent); }
+  60%  { background: radial-gradient(circle, rgba(0,255,255,0.8), transparent); }
+  80%  { background: radial-gradient(circle, rgba(0,0,255,0.8), transparent); }
+  100% { background: radial-gradient(circle, rgba(255,0,255,0.8), transparent); }
+}
 
-    /* Top Section */
-    .top {
-      text-align: center;
-      padding-top: 100px;
-      position: relative;
-      overflow: hidden;
-    }
-    .top h1 {
-      font-size: 3rem;
-      animation: fadeInDown 1.2s ease-in-out;
-    }
-    .top h2 {
-      font-size: 1.5rem;
-      font-weight: 300;
-      animation: fadeInUp 1.2s ease-in-out 0.3s;
-    }
-    .pro {
-      color: #ff4c60;
-    }
-    .top-cloud, .bottom-cloud {
-      position: absolute;
-      width: 150px;
-      opacity: 0.7;
-      animation: floatClouds 20s linear infinite;
-    }
-    .top-cloud {
-      top: 50px;
-      left: -200px;
-      animation-delay: 0s;
-    }
-    .bottom-cloud {
-      bottom: 100px;
-      right: -200px;
-      animation-delay: 10s;
-    }
-    @keyframes floatClouds {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(120vw); }
-    }
+/* Background parallax layers */
+.layer {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+.layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+}
 
-    /* Profile Section */
-    .profile {
-      text-align: center;
-      padding: 50px 20px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
-    .profile.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .profile-img {
-      width: 150px;
-      border-radius: 50%;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
-    }
+/* Sections */
+.section {
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+h1 {
+  font-size: 3rem;
+  text-shadow: 0 0 20px cyan, 0 0 40px cyan;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { text-shadow: 0 0 20px cyan, 0 0 40px cyan; }
+  50% { text-shadow: 0 0 40px cyan, 0 0 80px cyan; }
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.85;
+}
 
-    /* Skills Section */
-    .skills {
-      padding: 50px 20px;
-    }
-    .skill-row {
-      display: flex;
-      align-items: center;
-      margin: 40px 0;
-      gap: 20px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
-    .skill-row.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .skill-img, .skill-img1 {
-      width: 80px;
-    }
-    .skill-row:nth-child(even) {
-      flex-direction: row-reverse;
-    }
+/* Floating holographic cards */
+.card {
+  display: inline-block;
+  margin: 30px;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(0,255,255,0.05);
+  border: 1px solid rgba(0,255,255,0.3);
+  box-shadow: 0 0 20px rgba(0,255,255,0.2);
+  width: 250px;
+  transform-style: preserve-3d;
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.card img {
+  width: 80px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 10px cyan);
+}
 
-    /* Contact Section */
-    .contact-me {
-      text-align: center;
-      padding: 50px 20px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
-    .contact-me.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .btn {
-      background: linear-gradient(45deg, #ff4c60, #ff9a9e);
-      padding: 12px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      display: inline-block;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(255,76,96,0.5);
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(255,76,96,0.9);
-    }
+/* Neon button */
+.btn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  border: 2px solid cyan;
+  background: transparent;
+  color: white;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: cyan;
+  color: black;
+  box-shadow: 0 0 20px cyan, 0 0 40px cyan;
+}
 
-    /* Footer */
-    .bottom {
-      text-align: center;
-      padding: 20px;
-      background: rgba(255,255,255,0.05);
-      margin-top: 40px;
-    }
-    .footer-link {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #ff9a9e;
-    }
-    .footer-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Animations */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0,255,255,0.05);
+  font-size: 0.9rem;
+}
+</style>
 </head>
 <body>
 
-<div class="top">
-  <img class="top-cloud" src="img/cloud.png" alt="cloud">
-  <h1 id="typing"></h1>
-  <h2>web <span class="pro">des</span>igner</h2>
-  <img class="bottom-cloud" src="img/cloud.png" alt="cloud">
-  <img src="img/mountain.png" alt="mountain">
-</div>
+<!-- Parallax layers -->
+<div class="layer" data-speed="2"><img src="img/stars.png"></div>
+<div class="layer" data-speed="4"><img src="img/grid.png"></div>
 
-<div class="middle">
-  <div class="profile">
-    <img class="profile-img" src="img/shravan.png" alt="profile">
-    <h2>Hello.</h2>
-    <p>I am a Full Stack Developer.</p>
-  </div>
-  <hr>
-  <div class="skills">
-    <h2>My Skills.</h2>
-    <div class="skill-row">
-      <img class="skill-img" src="img/programming.png" alt="skill">
-      <div>
-        <h3>Designing & Development</h3>
-        <p>I started learning coding when I was 18 to build my own web page. Over time, I gained knowledge in designing and development.</p>
-      </div>
-    </div>
-    <div class="skill-row">
-      <img class="skill-img1" src="img/prototype.png" alt="skill">
-      <div>
-        <h3>App Designing</h3>
-        <p>After completing my first website, I wanted to create applications, so I started learning app design.</p>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="contact-me">
-    <h2>Get In Touch</h2>
-    <h3>If you want to learn web design.</h3>
-    <p class="cnt-p">Let's talk! I can help you learn the full web design course.</p>
-    <a class="btn" href="mailto:kankanalashravan98491@email.com">CONTACT ME</a>
-  </div>
-</div>
+<!-- Glow trail elements -->
+<div class="glow"></div>
+<div class="glow"></div>
+<div class="glow"></div>
+<div class="glow"></div>
+<div class="glow"></div>
 
-<div class="bottom">
-  <a class="footer-link" href="https://www.linkedin.com/feed/">LinkedIn</a>
-  <a class="footer-link" href="https://twitter.com/home">Twitter</a>
-  <a class="footer-link" href="#">Website</a>
-  <p class="copy-right">© Shravan Kankanala.</p>
-</div>
+<!-- Sections -->
+<section class="section">
+  <h1 id="title"></h1>
+  <h2>Web <span style="color:cyan;">Designer</span> & Developer</h2>
+</section>
 
+<section class="section">
+  <h2>My Skills</h2>
+  <div class="card">
+    <img src="img/programming.png" alt="skill">
+    <h3>Development</h3>
+    <p>Building futuristic, high-performance websites.</p>
+  </div>
+  <div class="card">
+    <img src="img/prototype.png" alt="skill">
+    <h3>App Design</h3>
+    <p>Creating modern, sleek mobile app UI/UX designs.</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Contact Me</h2>
+  <button class="btn">Send Message</button>
+</section>
+
+<footer>© Shravan Kankanala</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script>
-  // Typing Effect
-  const text = "I'm Shravan.";
-  let index = 0;
-  function typeEffect() {
-    if (index < text.length) {
-      document.getElementById("typing").innerHTML += text.charAt(index);
-      index++;
-      setTimeout(typeEffect, 150);
-    }
+/* Typing effect */
+const text = "I'm Shravan.";
+let i = 0;
+function typeEffect() {
+  if (i < text.length) {
+    document.getElementById("title").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 100);
   }
-  typeEffect();
+}
+typeEffect();
 
-  // Scroll Animations
-  const elements = document.querySelectorAll('.profile, .skill-row, .contact-me');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, { threshold: 0.2 });
+/* Parallax background */
+document.addEventListener("mousemove", e => {
+  document.querySelectorAll(".layer").forEach(layer => {
+    const speed = layer.getAttribute("data-speed");
+    const x = (window.innerWidth - e.pageX * speed) / 100;
+    const y = (window.innerHeight - e.pageY * speed) / 100;
+    layer.style.transform = `translateX(${x}px) translateY(${y}px)`;
+  });
+});
 
-  elements.forEach(el => observer.observe(el));
+/* Rainbow Glow Cursor Trail */
+const glows = document.querySelectorAll('.glow');
+document.addEventListener("mousemove", e => {
+  gsap.to(glows, {
+    x: e.clientX - 10,
+    y: e.clientY - 10,
+    stagger: 0.05
+  });
+});
+
+/* GSAP reveal animations */
+gsap.from(".section", {
+  opacity: 0,
+  y: 50,
+  duration: 1,
+  stagger: 0.3
+});
 </script>
-
 </body>
 </html>
