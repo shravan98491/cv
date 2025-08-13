@@ -1,63 +1,239 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>shravan</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script type='text/javascript'>
-	window.EESvcs = { 'eeid': 202407112311893 };
-</script>
-<script type='text/javascript' src="//ee.channels.ocs.oraclecloud.com/js/eesvcs.js">
-</script>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title>Shravan | Portfolio</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Top Section */
+    .top {
+      text-align: center;
+      padding-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .top h1 {
+      font-size: 3rem;
+      animation: fadeInDown 1.2s ease-in-out;
+    }
+    .top h2 {
+      font-size: 1.5rem;
+      font-weight: 300;
+      animation: fadeInUp 1.2s ease-in-out 0.3s;
+    }
+    .pro {
+      color: #ff4c60;
+    }
+    .top-cloud, .bottom-cloud {
+      position: absolute;
+      width: 150px;
+      opacity: 0.7;
+      animation: floatClouds 20s linear infinite;
+    }
+    .top-cloud {
+      top: 50px;
+      left: -200px;
+      animation-delay: 0s;
+    }
+    .bottom-cloud {
+      bottom: 100px;
+      right: -200px;
+      animation-delay: 10s;
+    }
+    @keyframes floatClouds {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(120vw); }
+    }
+
+    /* Profile Section */
+    .profile {
+      text-align: center;
+      padding: 50px 20px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    .profile.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .profile-img {
+      width: 150px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    /* Skills Section */
+    .skills {
+      padding: 50px 20px;
+    }
+    .skill-row {
+      display: flex;
+      align-items: center;
+      margin: 40px 0;
+      gap: 20px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    .skill-row.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .skill-img, .skill-img1 {
+      width: 80px;
+    }
+    .skill-row:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    /* Contact Section */
+    .contact-me {
+      text-align: center;
+      padding: 50px 20px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    .contact-me.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .btn {
+      background: linear-gradient(45deg, #ff4c60, #ff9a9e);
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(255,76,96,0.5);
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(255,76,96,0.9);
+    }
+
+    /* Footer */
+    .bottom {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      margin-top: 40px;
+    }
+    .footer-link {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #ff9a9e;
+    }
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
 <div class="top">
-  <img class="top-cloud"src="img/cloud.png" alt="cloud img">
-  <h1>I'm shravan.</h1>
+  <img class="top-cloud" src="img/cloud.png" alt="cloud">
+  <h1 id="typing"></h1>
   <h2>web <span class="pro">des</span>igner</h2>
-  <img class="bottom-cloud" src="img/cloud.png" alt="cloud img">
-  <img src="img/mountain.png" alt="moubtain img">
+  <img class="bottom-cloud" src="img/cloud.png" alt="cloud">
+  <img src="img/mountain.png" alt="mountain">
 </div>
+
 <div class="middle">
   <div class="profile">
-    <img  class="profile-img"src="img/shravan.png" alt="profile">
+    <img class="profile-img" src="img/shravan.png" alt="profile">
     <h2>Hello.</h2>
-    <p>Iam  a Full stack Developer.</p>
+    <p>I am a Full Stack Developer.</p>
   </div>
   <hr>
   <div class="skills">
     <h2>My Skills.</h2>
     <div class="skill-row">
       <img class="skill-img" src="img/programming.png" alt="skill">
-      <h3>Designing & development</h3>
-      <p>I started learnig coding when i was age of 18 because of i  want develop my own web page. over time gained a knowledge on designinng and development.</p>
+      <div>
+        <h3>Designing & Development</h3>
+        <p>I started learning coding when I was 18 to build my own web page. Over time, I gained knowledge in designing and development.</p>
+      </div>
     </div>
     <div class="skill-row">
       <img class="skill-img1" src="img/prototype.png" alt="skill">
-      <h3>App designing</h3>
-      <p>after complition of website i got thought to design an appliction.so i stared learning app designing.</p>
+      <div>
+        <h3>App Designing</h3>
+        <p>After completing my first website, I wanted to create applications, so I started learning app design.</p>
+      </div>
     </div>
   </div>
   <hr>
   <div class="contact-me">
     <h2>Get In Touch</h2>
-    <h3>If you want learn web design.</h3>
-    <p class="cnt-p">Lets talk about it,I can help you to learn full web design course.</p>
+    <h3>If you want to learn web design.</h3>
+    <p class="cnt-p">Let's talk! I can help you learn the full web design course.</p>
     <a class="btn" href="mailto:kankanalashravan98491@email.com">CONTACT ME</a>
   </div>
 </div>
 
-
 <div class="bottom">
   <a class="footer-link" href="https://www.linkedin.com/feed/">LinkedIn</a>
   <a class="footer-link" href="https://twitter.com/home">Twitter</a>
-  <a class="footer-link" href="***">Website</a>
-  <p class="copy-right">© shravan kankanala.</p>
+  <a class="footer-link" href="#">Website</a>
+  <p class="copy-right">© Shravan Kankanala.</p>
 </div>
 
-  </body>
-</html>
+<script>
+  // Typing Effect
+  const text = "I'm Shravan.";
+  let index = 0;
+  function typeEffect() {
+    if (index < text.length) {
+      document.getElementById("typing").innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeEffect, 150);
+    }
+  }
+  typeEffect();
 
+  // Scroll Animations
+  const elements = document.querySelectorAll('.profile, .skill-row, .contact-me');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  elements.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
